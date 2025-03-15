@@ -1,0 +1,355 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 30% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 263 90% 51%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 40 100% 97%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 143 55% 96%;
+    --accent-foreground: 143 65% 30%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 263 90% 51%;
+
+    --radius: 0.8rem;
+
+    --sidebar-background: 42 50% 97%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 263 90% 71%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 143 45% 16%;
+    --accent-foreground: 143 80% 80%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 263 90% 71%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-brand-500/20 selection:text-brand-700 dark:selection:bg-brand-500/30 dark:selection:text-brand-300;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Mobile-first approach for container padding */
+  .container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+  
+  img {
+    @apply max-w-full h-auto;
+  }
+  
+  .dark ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .dark ::-webkit-scrollbar-track {
+    @apply bg-gray-800;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-gray-600 rounded-full;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+}
+
+@layer components {
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-card-hover hover:transform hover:translate-y-[-5px];
+  }
+  
+  .gradient-heading {
+    @apply bg-gradient-to-r from-brand-700 to-brand-500 bg-clip-text text-transparent;
+  }
+  
+  .gradient-border {
+    @apply border border-transparent bg-gradient-to-r from-brand-600/50 to-brand-500/50 p-[1px] before:absolute before:inset-0 before:rounded-lg before:p-[1px];
+  }
+  
+  /* Enhanced mobile-responsive glass card */
+  .glass-card {
+    @apply bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm border border-gray-200 dark:border-gray-700 px-4 sm:px-6 py-6 sm:py-8 rounded-xl;
+  }
+  
+  .dark .glass-card {
+    @apply bg-gray-900/70 backdrop-blur-md border border-gray-700/50 shadow-lg;
+  }
+  
+  .dark .card {
+    @apply bg-gray-800 border-gray-700;
+  }
+  
+  .dark .button-primary {
+    @apply bg-brand-600 hover:bg-brand-700 text-white;
+  }
+  
+  .dark .button-secondary {
+    @apply bg-gray-700 hover:bg-gray-600 text-white;
+  }
+  
+  /* Make food cards more responsive */
+  .food-card {
+    @apply bg-gradient-food rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 w-full;
+  }
+  
+  .donation-status-badge {
+    @apply text-xs font-medium px-2.5 py-0.5 rounded-full;
+  }
+  
+  .donation-status-available {
+    @apply bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300;
+  }
+  
+  .donation-status-claimed {
+    @apply bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300;
+  }
+  
+  .donation-status-expired {
+    @apply bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300;
+  }
+  
+  .donation-status-collected {
+    @apply bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300;
+  }
+  
+  /* Make loading and success screens fully responsive */
+  .donation-loading-screen {
+    @apply fixed inset-0 flex flex-col items-center justify-center bg-white dark:bg-gray-900 bg-opacity-95 dark:bg-opacity-95 z-50 transition-all duration-500 px-4;
+  }
+  
+  .donation-loader {
+    @apply w-16 h-16 border-4 border-brand-200 dark:border-brand-900 border-t-brand-600 dark:border-t-brand-400 rounded-full animate-spin;
+  }
+  
+  .donation-success-screen {
+    @apply fixed inset-0 flex items-center justify-center bg-white dark:bg-gray-900 bg-opacity-95 dark:bg-opacity-95 z-50 transition-all duration-500 px-4;
+  }
+  
+  .donation-success-content {
+    @apply max-w-md w-full p-6 sm:p-8 rounded-xl bg-white dark:bg-gray-800 shadow-lg relative z-10 animate-scale-in border border-gray-100 dark:border-gray-700;
+  }
+  
+  .donation-success-checkmark {
+    @apply h-16 w-16 rounded-full bg-gradient-to-r from-green-400 to-green-500 dark:from-green-500 dark:to-green-600 flex items-center justify-center text-white text-4xl animate-bounce-slow;
+    content: '✓';
+  }
+  
+  .food-title {
+    @apply bg-gradient-to-br from-brand-700 to-brand-500 dark:from-brand-400 dark:to-brand-600 bg-clip-text text-transparent;
+  }
+  
+  .food-button {
+    @apply shadow-food-button hover:shadow-md transition-all;
+  }
+  
+  /* Mobile-optimized confetti animation */
+  .confetti {
+    @apply absolute w-3 h-8 animate-fall z-0;
+    background: linear-gradient(
+      to bottom,
+      #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8b00ff
+    );
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+  }
+  
+  /* Mobile form styles */
+  .form-container {
+    @apply w-full max-w-md mx-auto p-4 sm:p-6;
+  }
+  
+  .form-input {
+    @apply w-full rounded-lg border border-gray-300 dark:border-gray-700 px-4 py-2 text-sm;
+  }
+  
+  /* Responsive buttons */
+  .responsive-button {
+    @apply w-full sm:w-auto flex justify-center items-center;
+  }
+  
+  /* Responsive grids */
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+  }
+  
+  /* Mobile menu improvements */
+  .mobile-menu {
+    @apply py-2 px-2 space-y-1;
+  }
+  
+  .mobile-menu-item {
+    @apply block px-3 py-2 rounded-md text-base font-medium;
+  }
+  
+  /* Page containers */
+  .page-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8;
+  }
+  
+  /* Responsive headings */
+  .page-heading {
+    @apply text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-6;
+  }
+  
+  /* Card groups for better mobile layout */
+  .card-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .neo-blur {
+    @apply backdrop-blur-2xl bg-black/40 border border-white/10;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-br from-white via-white/90 to-white/70 bg-clip-text text-transparent;
+  }
+  
+  .bg-fresh-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  
+  .bg-food-pattern {
+    background-color: #FAFAFA;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23b196f6' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  }
+  
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  }
+  
+  /* Mobile-optimized keyframes */
+  @keyframes fall {
+    0% {
+      transform: translateY(-100px) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  .animate-fall {
+    animation: fall 5s linear forwards;
+  }
+  
+  /* Utility classes for responsive spacing */
+  .responsive-p {
+    @apply p-4 sm:p-6 md:p-8;
+  }
+  
+  .responsive-m {
+    @apply m-4 sm:m-6 md:m-8;
+  }
+  
+  .responsive-py {
+    @apply py-4 sm:py-6 md:py-8;
+  }
+  
+  .responsive-px {
+    @apply px-4 sm:px-6 md:px-8;
+  }
+  
+  /* Fix for mobile overflow issues */
+  .overflow-fix {
+    @apply overflow-x-hidden;
+  }
+  
+  /* Responsive visibility */
+  .mobile-only {
+    @apply block sm:hidden;
+  }
+  
+  .desktop-only {
+    @apply hidden sm:block;
+  }
+}
